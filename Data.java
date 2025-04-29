@@ -17,8 +17,20 @@ public class Data{
         }
     }
 
-    public int countIncreasingCols(){
+    public Data(int[][] arr){
+        grid = arr;
+    }
 
+    public int countIncreasingCols(){
+        int num = 0;
+        for (int i = 0; i < grid[0].length; i++){
+            for (int j = 0; j < grid.length; j++){
+                if (j == grid.length-1) num++;
+                else if (j+1 < grid.length && grid[j+1][i] >= grid[j][i]) j = j;
+                else break;
+            }
+        }
+        return num;
     }
 
     public String toString(){
